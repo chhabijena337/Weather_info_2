@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weatherly | Weather Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-mark"><i class="bi bi-wind"></i></div>
+      <button class="nav-link active" data-view="weather"><i class="bi bi-cloud-sun"></i><span>Weather</span></button>
+      <button class="nav-link" data-view="cities"><i class="bi bi-list-ul"></i><span>Cities</span></button>
+      <button class="nav-link" data-view="map"><i class="bi bi-map"></i><span>Map</span></button>
+      <button class="nav-link" data-view="settings"><i class="bi bi-sliders"></i><span>Settings</span></button>
+    </aside>
+
+    <section class="dashboard">
+      <header class="topbar">
+        <form id="searchForm" class="search-wrap">
+          <i class="bi bi-search"></i>
+          <input id="citySearch" type="search" placeholder="Search for cities" autocomplete="off" aria-label="Search for a city">
+          <button type="submit" aria-label="Search"><i class="bi bi-arrow-right"></i></button>
+        </form>
+        <div id="searchMessage" class="search-message" aria-live="polite"></div>
+      </header>
+
+      <div class="weather-layout">
+        <section class="main-column">
+          <section class="current-weather">
+            <div class="current-copy">
+              <p class="eyebrow" id="todayLabel">CURRENT WEATHER</p>
+              <h1 id="cityName">Madrid</h1>
+              <p class="rain-line">Chance of rain: <span id="rainChance">0%</span></p>
+              <div class="temperature" id="currentTemp">31°</div>
+              <p class="condition-text" id="currentCondition">Sunny</p>
+            </div>
+            <div class="hero-weather-icon" id="heroIcon" aria-label="Sunny weather">☀️</div>
+          </section>
+
+          <section class="panel hourly-panel">
+            <div class="panel-heading">
+              <h2>TODAY'S FORECAST</h2>
+              <span id="hourlyDate"></span>
+            </div>
+            <div class="hourly-list" id="hourlyForecast">
+              <div class="hour-item"><span>6:00 AM</span><b>☁️</b><strong>25°</strong></div>
+              <div class="hour-item"><span>9:00 AM</span><b>🌤️</b><strong>28°</strong></div>
+              <div class="hour-item"><span>12:00 PM</span><b>☀️</b><strong>33°</strong></div>
+              <div class="hour-item"><span>3:00 PM</span><b>☀️</b><strong>34°</strong></div>
+              <div class="hour-item"><span>6:00 PM</span><b>☀️</b><strong>32°</strong></div>
+              <div class="hour-item"><span>9:00 PM</span><b>🌤️</b><strong>30°</strong></div>
+            </div>
+          </section>
+
+          <section class="panel air-panel">
+            <div class="panel-heading">
+              <h2>AIR CONDITIONS</h2>
+              <button class="see-more" id="moreBtn" type="button">See more</button>
+            </div>
+            <div class="air-grid">
+              <div class="air-item"><i class="bi bi-thermometer-half"></i><div><span>Real Feel</span><strong id="feelsLike">30°</strong></div></div>
+              <div class="air-item"><i class="bi bi-wind"></i><div><span>Wind</span><strong id="windSpeed">0.2 km/h</strong></div></div>
+              <div class="air-item"><i class="bi bi-droplet-half"></i><div><span>Chance of rain</span><strong id="airRain">0%</strong></div></div>
+              <div class="air-item"><i class="bi bi-sun"></i><div><span>UV Index</span><strong id="uvIndex">3</strong></div></div>
+            </div>
+            <div class="extra-air" id="extraAir">
+              <div><span>Humidity</span><strong id="humidity">--%</strong></div>
+              <div><span>Visibility</span><strong id="visibility">-- km</strong></div>
+              <div><span>Pressure</span><strong id="pressure">-- hPa</strong></div>
+            </div>
+          </section>
+        </section>
+
+        <aside class="panel weekly-panel">
+          <div class="panel-heading"><h2>7-DAY FORECAST</h2></div>
+          <div id="weeklyForecast" class="weekly-list">
+            <div class="day-row"><span>Today</span><b>☀️</b><strong>Sunny</strong><span class="day-temps">36 / 22</span></div>
+            <div class="day-row"><span>Tue</span><b>☀️</b><strong>Sunny</strong><span class="day-temps">37 / 21</span></div>
+            <div class="day-row"><span>Wed</span><b>☀️</b><strong>Sunny</strong><span class="day-temps">37 / 21</span></div>
+            <div class="day-row"><span>Thu</span><b>☁️</b><strong>Cloudy</strong><span class="day-temps">37 / 21</span></div>
+            <div class="day-row"><span>Fri</span><b>☁️</b><strong>Cloudy</strong><span class="day-temps">37 / 21</span></div>
+            <div class="day-row"><span>Sat</span><b>🌧️</b><strong>Rainy</strong><span class="day-temps">37 / 21</span></div>
+            <div class="day-row"><span>Sun</span><b>⛈️</b><strong>Storm</strong><span class="day-temps">37 / 21</span></div>
+          </div>
+          <div class="location-note"><i class="bi bi-geo-alt"></i> Weather data for <span id="locationFooter">Madrid</span></div>
+        </aside>
+      </div>
+      <footer>Weatherly <span>·</span> Weather information powered by Open-Meteo</footer>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
